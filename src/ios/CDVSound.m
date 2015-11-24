@@ -557,7 +557,22 @@
             }
             
             // create a new recorder for each start record
-            audioFile.recorder = [[CDVAudioRecorder alloc] initWithURL:audioFile.resourceURL settings:nil error:&error];
+            NSArray *dirPaths;
+            NSString *docsDir;
+            
+            dirPaths = NSSearchPathForDirectoriesInDomains(
+                                                           NSDocumentDirectory, NSUserDomainMask, YES);
+            docsDir = dirPaths[0];
+            
+            NSDictionary *recordSettings = [[NSDictionary alloc]
+                                            initWithObjectsAndKeys:
+                                            [NSNumber numberWithInt:kAudioFormatULaw],AVFormatIDKey,
+                                            [NSNumber numberWithInt:16000],AVSampleRateKey,
+                                            [NSNumber numberWithInt: 1],AVNumberOfChannelsKey,
+                                            [NSNumber numberWithInt:8],AVLinearPCMBitDepthKey,
+                                            nil];
+            
+            audioFile.recorder = [[CDVAudioRecorder alloc] initWithURL:audioFile.resourceURL settings:recordSettings error:&error];
             
             bool recordingSuccess = NO;
             if (error == nil) {
