@@ -23,7 +23,7 @@ xmlns:android="http://schemas.android.com/apk/res/android"
 id="cordova-plugin-media"
     version="2.0.0">
 
-    <name>Media</name>
+    <name>cordova-plugin-media</name>
     <description>Cordova Media Plugin</description>
     <license>Apache 2.0</license>
     <keywords>cordova,media</keywords>
