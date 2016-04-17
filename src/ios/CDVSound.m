@@ -564,16 +564,13 @@
                                                            NSDocumentDirectory, NSUserDomainMask, YES);
             docsDir = dirPaths[0];
             
+            // change recording to 1 channel
             NSDictionary *recordSettings = [[NSDictionary alloc]
                                             initWithObjectsAndKeys:
-                                            [NSNumber numberWithInt:kAudioFormatULaw],AVFormatIDKey,
-                                            [NSNumber numberWithInt:16000],AVSampleRateKey,
-                                            [NSNumber numberWithInt: 1],AVNumberOfChannelsKey,
-                                            [NSNumber numberWithInt:8],AVLinearPCMBitDepthKey,
-                                            nil];
+                                            [NSNumber numberWithInt: 1],AVNumberOfChannelsKey,                                            nil];
             
             audioFile.recorder = [[CDVAudioRecorder alloc] initWithURL:audioFile.resourceURL settings:recordSettings error:&error];
-            
+
             bool recordingSuccess = NO;
             if (error == nil) {
                 audioFile.recorder.delegate = weakSelf;
