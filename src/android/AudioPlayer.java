@@ -467,6 +467,14 @@ public class AudioPlayer implements OnCompletionListener, OnPreparedListener, On
      */
     private boolean readyPlayer(String file) {
         if (playMode()) {
+            if (this.player == null) {
+                this.player = new MediaPlayer();
+            }
+            try {
+                this.loadAudioFile(file);
+            } catch (Exception e) {
+                sendErrorStatus(MEDIA_ERR_ABORTED);
+            }
             switch (this.state) {
                 case MEDIA_NONE:
                     if (this.player == null) {
