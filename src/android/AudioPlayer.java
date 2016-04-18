@@ -182,7 +182,7 @@ public class AudioPlayer implements OnCompletionListener, OnPreparedListener, On
 
         String logMsg = "renaming " + this.tempFile + " to " + file;
         Log.d(LOG_TAG, logMsg);
-        if (!f.renameTo(new File(file))) Log.e(LOG_TAG, "FAILED " + logMsg);
+        if (!f.move(this.tempFile, file)) Log.e(LOG_TAG, "FAILED " + logMsg);
     }
 
     /**
