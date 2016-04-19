@@ -21,6 +21,7 @@
 
 # cordova-plugin-media
 
+# this repository is no longer used in the build. Media now records in one channel by default...
 
 This plugin provides the ability to record and play back audio files on a device.
 
